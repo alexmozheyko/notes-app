@@ -2,8 +2,8 @@
 
 1. Installation:
 	
-	- $root: npm i / yarn install
-	- $root/client: npm i / yarn install
+	* $root: npm i / yarn install
+	* $root/client: npm i / yarn install
 
 2. Run:
 
