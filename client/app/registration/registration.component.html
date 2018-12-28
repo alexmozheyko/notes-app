@@ -1,0 +1,123 @@
+<nav class="navbar navbar-transparent navbar-absolute">
+    <div class="container navbar__wrapper">
+        <div class="navbar-header">
+            <button 
+                type        = "button" 
+                class       = "navbar-toggle menu__button"
+                data-toggle = "collapse" 
+                data-target = ".navbar-collapse"
+            >
+                <span class="sr-only"> Toggle navigation </span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a 
+                class = "navbar-brand application__name" 
+                href  = "#"
+            > 
+                Notes application 
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right navbar__links">
+                <li>
+                    <span 
+                        class      = "signIn__link"
+                        routerLink = "/signin"
+                    >
+                        Sign in 
+                    </span>
+                </li>
+                <li>
+                    <span 
+                        class      = "register__link link-active"
+                        routerLink = "/register" 
+                    > 
+                        Register 
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="authorization__wrapper">
+    
+    <!--Registration from-->
+    <div class="container container-table">
+        <div class="row vertical-center-row">
+            <div class="text-center col-md-4 col-sm-3 col-md-offset-4 col-sm-offset-3">
+                <div class="registration-card__container">
+                    <div class="registration-card__title">
+                        <span> Registration </span>
+                    </div>
+                    <form 
+                        name         = "registration"
+                        class        = "registration-card__info"
+                        autocomplete = "off"
+                        #formData    = "ngForm"
+                        (ngSubmit)   = "onSubmit(formData)"
+                        novalidate
+                    >
+                        <input 
+                            type        = "text"
+                            name        = "firstName"
+                            placeholder = "Your first name"
+                            [(ngModel)] = "firstName" 
+                        />
+                        <input 
+                            type        = "text"
+                            name        = "lastName"
+                            placeholder = "Your last name"
+                            [(ngModel)] = "lastName"
+                        />
+                        <input 
+                            type        = "text"
+                            name        = "email"
+                            placeholder = "Enter email"
+                            [(ngModel)] = "email"
+                        />
+                        <input 
+                            type        = "password"
+                            name        = "password"
+                            placeholder = "Password"
+                            [(ngModel)] = "password"
+                        />
+                        <input 
+                            type        = "password"
+                            name        = "confirmation"
+                            placeholder = "Password confirmation"
+                            [(ngModel)] = "confirmation"
+                        />
+                        <button 
+                            type    = "submit"
+                            name    = "submit"
+                        > 
+                            Create account 
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <div class="footer navbar-fixed-bottom">
+        <div class="text-center col-md-4 col-md-offset-4">
+            <div class="footer__content">
+                <span class="content__copyright-symbol"> &copy; 2017</span>
+                <span class="content__author">
+                    <a 
+                        href   = "https://vk.com/aleks_mozheiko" 
+                        target = "_blank"
+                    > 
+                        Alexei Mozheiko 
+                    </a>
+                </span>
+                <span class="content__rights-info">. All rights reserved </span>
+            </div>
+        </div>
+    </div>
+</div>

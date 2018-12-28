@@ -1,0 +1,8 @@
+@import "./assets/resources/_colors";
+@import "./assets/resources/_fonts";
+
+// Disable Chrome outline
+*:focus {
+    outline: none;
+}
+

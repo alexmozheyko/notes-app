@@ -1,0 +1,312 @@
+<div class="notes-list__wrapper">
+    <div class="note-creation-card__block">
+
+        <div class="creation-card__left-clearfix"></div>
+
+        <!--Create note card-->
+        <div 
+            class              = "creation-card__wrapper"
+            [style.background] = "newNote.colorHex"
+        >
+
+            <!--Title-->
+            <div class="creation-card__note-title">
+                <input 
+                    type        = "text"
+                    [(ngModel)] = "newNote.title"
+                    placeholder = "Enter note title here ..."
+                    maxlength   = "100"
+                />
+            </div>
+
+            <!--Content-->
+            <div class="creation-card__note-content">
+                <input 
+                    type        = "text"
+                    [(ngModel)] = "newNote.content"
+                    placeholder = "Enter note content here ..."
+                    maxlength   = "2000"
+                />
+            </div>
+
+            <!--Buttons-->
+            <div class="creation-card__management-block">
+
+                <div class="management-block__icons">
+
+                    <!--Color palette icon-->
+                    <span 
+                        class               = "icons__wrapper"
+                        data-balloon-length = "small" 
+                        data-balloon        = "Change color" 
+                        data-balloon-pos    = "up"
+                        data-toggle         = "dropdown"
+                    >
+                        <i class="ion-android-color-palette"></i>
+                    </span>
+                    <ul class="dropdown-menu palette__dropdown">
+                        <li> 
+                            <div 
+                                *ngFor             = "let color of colors"
+                                class              = "palette-circle"
+                                [style.background] = "color.hex"
+                                (click)            = "newNote.colorHex = color.hex"
+                            ></div>
+                        </li>
+                    </ul>
+
+                    <!--Image icon-->
+                    <span 
+                        class               = "icons__wrapper"
+                        data-balloon-length = "small" 
+                        data-balloon        = "Add image" 
+                        data-balloon-pos    = "down"
+                    >
+                        <i class="ion-android-image"></i>
+                    </span>
+
+                    <!--Label icon-->
+                    <span 
+                        class               = "icons__wrapper"
+                        data-balloon-length = "small" 
+                        data-balloon        = "Add label" 
+                        data-balloon-pos    = "down"
+                    >
+                        <i class="ion-ios-pricetag"></i>
+                    </span>
+
+                    <!--List icon-->
+                    <span 
+                        class               = "icons__wrapper"
+                        data-balloon-length = "small" 
+                        data-balloon        = "New list" 
+                        data-balloon-pos    = "down"
+                    >
+                        <i class="ion-ios-list"></i>
+                    </span>
+                </div>
+
+                <div class="management-block__btns">
+                    <button
+                        (click)    = "createNote()"
+                        [ngClass] = "{ 
+                            'create-btn-disabled':  !newNote.title && !newNote.content
+                        }"
+                    > 
+                        Create 
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="creation-card__right-clearfix"></div>
+    </div>
+
+    <!--Notes list-->
+    <div class="notes-block__wrapper">
+        <div class="container">
+            <div class="row" style="position: relative">
+                <div 
+                    class  = "col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb"
+                    *ngFor = "let note of notes"
+                >
+                    <div 
+                        class              = "note-card" 
+                        [style.background] = "note.colorHex"
+                    >
+                        <div class="note__title">
+                        <span> {{ note.title }} </span>
+                    </div>
+                        <div class="note__dropdown-menu">
+                            <i 
+                                class         = "ion-android-more-vertical" 
+                                data-toggle   = "dropdown" 
+                            ></i>
+
+                            <ul class="dropdown-menu note-card__dropdown">
+                                <li 
+                                    data-toggle = "modal" 
+                                    data-target = "#updatedNote"
+                                    (click)     = "preUpdateNote(note)"
+                                > 
+                                    Update 
+                                </li>
+                                <li 
+                                    (click) = "deleteNote(note._id)"
+                                > 
+                                    Delete 
+                                </li>
+                            </ul>
+  
+                        </div>
+                        <div class="note__content">
+                            <span> {{ note.content }} </span>
+                        </div>
+                        <div class="note__management-block">
+                            
+                            <!--Color palette icon-->
+                            <span 
+                                class               = "icons__wrapper"
+                                data-balloon-length = "small" 
+                                data-balloon        = "Change color" 
+                                data-balloon-pos    = "up"
+                                data-toggle         = "dropdown"
+                            >
+                                <i class="ion-android-color-palette"></i>
+                            </span>
+                            <ul class="dropdown-menu palette__dropdown">
+                                <li> 
+                                    <div 
+                                        *ngFor             = "let color of colors"
+                                        class              = "palette-circle"
+                                        [style.background] = "color.hex"
+                                        (click)            = "updateNote(note, color.hex)"
+                                    ></div>
+                                </li>
+                            </ul>
+
+                            <!--Archive icon-->
+                            <span 
+                                class               = "icons__wrapper"
+                                data-balloon-length = "small" 
+                                data-balloon        = "Archive" 
+                                data-balloon-pos    = "down"
+                            >
+                                <i class="ion-ios-box"></i>
+                            </span>
+
+                            <!--Copy icon-->
+                            <span 
+                                class               = "icons__wrapper"
+                                data-balloon-length = "small" 
+                                data-balloon        = "Copy note" 
+                                data-balloon-pos    = "down"
+                            >
+                                <i class="ion-ios-copy"></i>
+                            </span>
+
+                            <!--Label icon-->
+                            <span 
+                                class               = "icons__wrapper"
+                                data-balloon-length = "small" 
+                                data-balloon        = "Add label" 
+                                data-balloon-pos    = "down"
+                            >
+                                <i class="ion-ios-pricetag"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div 
+                        class = "modal fade" 
+                        id    = "updatedNote" 
+                        role  = "dialog"
+                    >
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div 
+                                    class              = "update-note__wrapper"
+                                    [style.background] = "preUpdatedNote.colorHex"
+                                >
+
+                                    <!--Title-->
+                                    <div class="creation-card__note-title">
+                                        <input 
+                                            type        = "text"
+                                            [(ngModel)] = "preUpdatedNote.title"
+                                            placeholder = "Enter note title here ..."
+                                            maxlength   = "100"
+                                        />
+                                    </div>
+
+                                    <!--Content-->
+                                    <div class="creation-card__note-content">
+                                        <input 
+                                            type        = "text"
+                                            [(ngModel)] = "preUpdatedNote.content"
+                                            placeholder = "Enter note content here ..."
+                                            maxlength   = "2000"
+                                        />
+                                    </div>
+
+                                    <!--Buttons-->
+                                    <div class="creation-card__management-block">
+
+                                        <div class="management-block__icons">
+
+                                            <!--Color palette icon-->
+                                            <span 
+                                                class               = "icons__wrapper"
+                                                data-balloon-length = "small" 
+                                                data-balloon        = "Change color" 
+                                                data-balloon-pos    = "up"
+                                                data-toggle         = "dropdown"
+                                            >
+                                                <i class="ion-android-color-palette"></i>
+                                            </span>
+                                            <ul class="dropdown-menu palette__dropdown">
+                                                <li> 
+                                                    <div 
+                                                        *ngFor             = "let color of colors"
+                                                        class              = "palette-circle"
+                                                        [style.background] = "color.hex"
+                                                        (click)            = "preUpdatedNote.colorHex = color.hex"
+                                                    ></div>
+                                                </li>
+                                            </ul>
+
+                                            <!--Image icon-->
+                                            <span 
+                                                class               = "icons__wrapper"
+                                                data-balloon-length = "small" 
+                                                data-balloon        = "Add image" 
+                                                data-balloon-pos    = "down"
+                                            >
+                                                <i class="ion-android-image"></i>
+                                            </span>
+
+                                            <!--Label icon-->
+                                            <span 
+                                                class               = "icons__wrapper"
+                                                data-balloon-length = "small" 
+                                                data-balloon        = "Add label" 
+                                                data-balloon-pos    = "down"
+                                            >
+                                                <i class="ion-ios-pricetag"></i>
+                                            </span>
+
+                                            <!--List icon-->
+                                            <span 
+                                                class               = "icons__wrapper"
+                                                data-balloon-length = "small" 
+                                                data-balloon        = "New list" 
+                                                data-balloon-pos    = "down"
+                                            >
+                                                <i class="ion-ios-list"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="management-block__btns">
+                                            <button
+                                                data-dismiss = "modal"
+                                                (click)      = "updateNote(preUpdatedNote)"
+                                                [ngClass] = "{ 
+                                                    'btn-disabled':  !preUpdatedNote.title && !preUpdatedNote.content
+                                                }"
+                                            > 
+                                                Update 
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

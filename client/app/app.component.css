@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'SourceSansPro-Semibold';
+  src: url(app/assets/fonts/source-sans-pro/SourceSansPro-Semibold.otf); }
+@font-face {
+  font-family: 'SourceSansPro-Regular';
+  src: url(app/assets/fonts/source-sans-pro/SourceSansPro-Regular.otf); }
+@font-face {
+  font-family: 'SourceSansPro-Light';
+  src: url(app/assets/fonts/source-sans-pro/SourceSansPro-Light.otf); }
+@font-face {
+  font-family: 'SourceSansPro-ExtraLight';
+  src: url(app/assets/fonts/source-sans-pro/SourceSansPro-ExtraLight.otf); }
+*:focus {
+  outline: none; }
+
+/*# sourceMappingURL=app.component.css.map */

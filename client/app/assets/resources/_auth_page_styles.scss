@@ -1,0 +1,163 @@
+@import "./_colors";
+@import "./_fonts";
+
+// Wrapper for navbar
+%navbar__wrapper {
+
+    .menu__button {
+        padding-top: 12px;
+    }
+
+    .application__name {
+        font-family : 'SourceSansPro-Semibold';
+        font-size   : 30px;
+    }
+
+    .navbar__links {
+        margin-top: 18px;
+
+        .signIn__link, .register__link {
+            text-transform : none;
+            font-family    : 'SourceSansPro-Semibold';
+            font-size      : 20px;
+            color          : $alto;
+
+            -webkit-transition : color .2s ease-in;
+               -moz-transition : color .2s ease-in;
+                -ms-transition : color .2s ease-in;
+                    transition : color .2s ease-in;
+
+            &:hover {
+                color  : $white;
+                cursor : pointer;
+                
+                -webkit-transition : color .2s ease-in;
+                   -moz-transition : color .2s ease-in;
+                    -ms-transition : color .2s ease-in;
+                        transition : color .2s ease-in;
+            } 
+        }
+
+        .signIn__link {
+            border-right  : 1px solid $white;
+            padding-right : 10px;
+            margin-right  : 10px;
+        }
+
+        .signIn__link-active, .register__link-active {
+            color: $white;
+        }
+
+        .link-active {
+            color: $white;
+        }
+    }
+}
+
+// Authorization page global wrapper
+%authorization__wrapper {
+    display             : flex;
+    align-items         : center;
+    background-image    : url('app/assets/images/auth_background.jpg');
+    background-repeat   : no-repeat;
+    background-size     : cover;
+    background-position : center;
+    width               : 100%;
+    height              : 100%;
+}
+
+// Authorization card wrapper
+%auth-card__container {
+    width            : 360px;
+    background-color : $white;
+    border-radius    : 10px;
+    box-shadow       : 0 4px 12px $black;
+
+    -webkit-animation: fade-in-from-top .8s; 
+       -moz-animation: fade-in-from-top .8s; 
+        -ms-animation: fade-in-from-top .8s; 
+            animation: fade-in-from-top .8s;
+}
+
+// Authorization card title
+%auth-card__title {
+    font-size   : 30px;
+    font-family : 'SourceSansPro-Regular';
+    color       : $tundora; 
+}
+
+
+// Fixed footer
+%footer__content {
+    font-size     : 16px;
+        font-family   : 'SourceSansPro-Semibold';
+        margin-bottom : 45px;
+
+        .content__copyright-symbol, .content__rights-info {
+            color: $silver-chalice;
+        }
+
+        .content__author {
+            a {
+                color: $white;
+
+                &:hover, &:active, &:visited, &:focus {
+                    text-decoration: none;
+                }
+            }
+        }
+}
+
+// Input field in registration/signin form
+%auth__input {
+    background-color : transparent;
+    width            : 330px;
+    height           : 35px;
+    border           : 1px solid $nobel;
+    border-radius    : 4px;
+    padding-left     : 9px;
+    margin-top       : 2px;
+
+    -webkit-transition : all .3s ease-in-out;
+       -moz-transition : all .3s ease-in-out;
+        -ms-transition : all .3s ease-in-out;
+            transition : all .3s ease-in-out;
+
+    &:focus {
+        box-shadow : 0 0 3px 0 rgba($east-bay, .8);
+        border     : 1px solid rgba($east-bay, .8);
+    }
+
+    &::-webkit-input-placeholder {
+        font-size    : 14px;
+        font-family  : 'SourceSansPro-Regular';
+        color        : $dusty-gray;
+    }
+}
+
+// Submit button in authorization form
+%submit__button {
+    width            : 180px;
+    height           : 36px;
+    border           : none;
+    border-radius    : 4px;
+    background-color : $east-bay;
+    color            : $white;
+    font-size        : 16px;
+    font-weight      : 600;
+    font-family      : 'SourceSansPro-Semibold';
+
+    -webkit-transition : background-color .3s ease-in-out;
+       -moz-transition : background-color .3s ease-in-out;
+        -ms-transition : background-color .3s ease-in-out;
+            transition : background-color .3s ease-in-out;
+
+    &:hover {
+        background-color: lighten($east-bay, 5%);
+
+        -webkit-transition : background-color .3s ease-in-out;
+           -moz-transition : background-color .3s ease-in-out;
+            -ms-transition : background-color .3s ease-in-out;
+                transition : background-color .3s ease-in-out;
+    }
+}

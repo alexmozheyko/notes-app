@@ -1,0 +1,110 @@
+<nav class="navbar navbar-transparent navbar-absolute">
+    <div class="container navbar__wrapper">
+        <div class="navbar-header">
+            <button 
+                type        = "button" 
+                class       = "navbar-toggle menu__button"
+                data-toggle = "collapse" 
+                data-target = ".navbar-collapse"
+            >
+                <span class="sr-only"> Toggle navigation </span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a 
+                class = "navbar-brand application__name" 
+                href  = "#"
+            > 
+                Notes application 
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right navbar__links">
+                <li>
+                    <span 
+                        class      = "signIn__link link-active"
+                        routerLink = "/signin"
+                    >
+                        Sign in 
+                    </span>
+                </li>
+                <li>
+                    <span 
+                        class      = "register__link"
+                        routerLink = "/register" 
+                    > 
+                        Register 
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="authorization__wrapper">
+
+    <ng2-toasty></ng2-toasty>
+    
+    <!--Sign In form-->
+    <div class="container container-table">
+        <div class="row vertical-center-row">
+            <div class="text-center col-md-4 col-sm-3 col-md-offset-4 col-sm-offset-3">
+                <div class="auth-card__container">
+                    <div class="auth-card__title">
+                        <span> Sign in </span>
+                    </div>
+                    <form 
+                        name         = "Sign in"
+                        class        = "auth-card__info"
+                        autocomplete = "off"
+                        #formData    = "ngForm"
+                        (ngSubmit)   = "onSubmit(formData)"
+                        novalidate
+                    >   
+                        <div class="auth-card__input-wrapper">
+                            <span class="input__label"> Email address </span>
+                            <input
+                                class       = "email__field"
+                                name        = "email"
+                                type        = "text"
+                                placeholder = "Enter email"
+                                [(ngModel)] = "email"
+                            />
+                        </div>
+                        <div class="auth-card__input-wrapper">
+                            <span class="input__label"> Password </span>
+                            <input 
+                                class       = "password__field"
+                                name        = "password"
+                                type        = "password"
+                                placeholder = "Password"
+                                [(ngModel)] = "password"
+                            />
+                        </div>
+                        <button type="submit"> Sign in </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <div class="footer navbar-fixed-bottom">
+        <div class="text-center col-md-4 col-md-offset-4">
+            <div class="footer__content">
+                <span class="content__copyright-symbol"> &copy; 2017</span>
+                <span class="content__author">
+                    <a 
+                        href   = "https://vk.com/aleks_mozheiko" 
+                        target = "_blank"
+                    > 
+                        Alexei Mozheiko 
+                    </a>
+                </span>
+                <span class="content__rights-info">. All rights reserved </span>
+            </div>
+        </div>
+    </div>
+</div>

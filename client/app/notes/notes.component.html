@@ -1,0 +1,140 @@
+<div class="notes__global-wrapper">  
+
+    <!--Navbar-->
+    <nav class="navbar navbar-absolute navbar-east-bay">
+
+        <!--menu hamburger icon-->
+        <div class="menu-button__wrapper">
+            <button 
+                class     = "menu-button menu-button__close-icon"
+                [ngClass] = "{ 'menu-button-active': sideMenuWidth }"
+                (click)   = "sideMenuWidth = sideMenuWidth ? 0 : 300"
+            >
+                <span> toggle menu </span>
+            </button>
+        </div>
+
+        <!--notes search field-->
+        <div class="search-field__wrapper">
+            <i class="ion-ios-search-strong"></i>
+            <input 
+                class       = "search-field"
+                type        = "text"
+                placeholder = "Search"
+            />
+            <span class="focus-border"></span>
+        </div>
+
+        <!--sign out icon-->
+        <div class="signout-button__wrapper">
+            <span
+                data-balloon-length = "small" 
+                data-balloon        = "Sign out" 
+                data-balloon-pos    = "left"
+            >
+                <i 
+                    class   = "ion-log-out"
+                    (click) = "signOut()"
+                >
+                </i>
+            </span>
+        </div>
+    </nav>
+    
+
+    <!--Side Menu-->
+    <div 
+        class            = "sidenav-menu" 
+        [style.width.px] = "sideMenuWidth"
+    >
+        <!--User main info-->
+        <div class = "user-info__wrapper">
+            <div class="user__photo">
+                <!--HARDCODED!-->
+                <div style="width: 45px; height: 45px; background-color: white">
+
+                </div>
+            </div>
+            <div class="user-info__content">
+                <span class="user__name">
+                    {{ user.firstName + ' ' + user.lastName}}
+                </span>
+                <span class="user__registration-date">
+                    member since {{ formatUserRegistrationDate(user.registrationDate) }}
+                </span>
+            </div>
+        </div>
+
+        <!--Notes link-->
+        <div 
+            class     = "sidemenu-option__wrapper"
+            [ngClass] = "{ 'sidemenu-option-active': true }"
+        >
+            <div class="sidemenu-option__icon">
+                <i class="icon ion-android-list"></i>
+            </div>
+            <div 
+                class      = "sidemenu-option__name"
+                routerLink = "/list"
+            >
+                Notes
+            </div>
+        </div>
+
+        <!--Archive link-->
+        <div 
+            class     = "sidemenu-option__wrapper"
+            [ngClass] = "{ 'sidemenu-option-active': false }"
+        >
+            <div class="sidemenu-option__icon">
+                <i class="icon ion-ios-box"></i>
+            </div>
+            <div class="sidemenu-option__name">
+                Archive
+            </div>
+        </div>
+
+        <!--Trash link-->
+        <div 
+            class     = "sidemenu-option__wrapper"
+            [ngClass] = "{ 'sidemenu-option-active': false }"
+        >
+            <div class="sidemenu-option__icon">
+                <i class="icon ion-trash-b"></i>
+            </div>
+            <div class="sidemenu-option__name">
+                Trash
+            </div>
+        </div>
+
+        <!--Settings link-->
+        <div 
+            class     = "sidemenu-option__wrapper"
+            [ngClass] = "{ 'sidemenu-option-active': false }"
+        >
+            <div class="sidemenu-option__icon">
+                <i class="icon ion-android-settings"></i>
+            </div>
+            <div class="sidemenu-option__name">
+                Settings
+            </div>
+        </div>
+
+        <!--Footer author info-->
+        <div class="sidemenu-footer__wrapper">
+            <span class="sidemenu-footer__copyright-info">
+                &copy; 2017. All rights reserved
+            </span>
+            <span class="sidemenu-footer__author-info">
+                Built by 
+                <a href="https://vk.com/aleks_mozheiko" target="_blank">
+                    Alexei Mozheiko
+                </a>
+            </span>
+        </div>
+    </div>
+
+    <div class="notes-app-content__wrapper">
+        <router-outlet></router-outlet>
+    </div>
+</div>

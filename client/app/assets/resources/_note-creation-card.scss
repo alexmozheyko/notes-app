@@ -1,0 +1,118 @@
+@import "./_colors";
+@import "./_fonts";
+@import "./_animations";
+
+%creation-card {
+    flex             : 1 0 35%;
+    height           : 140px;
+    background-color : $white;
+    border-radius    : 4px;
+    box-shadow       : 0px 2px 15px 1px $black;
+    display          : flex;
+    flex-direction   : column; 
+
+    @media (max-width: 1024px) {
+        flex: 1 0 60%;
+    }
+
+    @media (max-width: 600px) {
+        flex: 1 0 80%;
+    }
+
+    .creation-card__note-title {
+        flex        : 1 0 25%;
+        padding     : 14px 14px 0 14px;
+        line-height : 18px;
+
+        input {
+            width            : 100%;
+            border           : none;
+            color            : $black;
+            font-family      : 'SourceSansPro-Semibold';
+            font-size        : 20px;
+            background-color : transparent;
+
+            &::-webkit-input-placeholder {
+                color: $black;
+            }
+        }
+    }
+
+    .creation-card__note-content {
+        flex        : 1 0 45%;
+        padding     : 13px;
+        display     : flex;
+        align-items : center;
+
+        input {
+            width            : 100%;
+            border           : none;
+            color            : $black;
+            font-family      : 'SourceSansPro-Light';
+            font-size        : 22px;
+            background-color : transparent;
+
+            &::-webkit-input-placeholder {
+                color: $black;
+            }
+        }
+    }
+
+    .creation-card__management-block {
+        flex            : 1 0 25%;
+        display         : flex;
+        justify-content : space-between;
+        align-items     : flex-start;
+        padding         : 0 10px 0 14px;
+        position        : relative;
+
+        .management-block__icons {
+            flex       : 1 0 57%;
+            margin-top : 3px;
+
+            .icons__wrapper {
+                
+                &:not(:last-of-type) {
+                    margin-right: 18px;
+                }
+
+                i {
+                    font-size : 2rem;
+                    color     : rgba($black, .7);
+                    cursor    : pointer;
+
+                    &:hover {
+                        color: $black;
+                    }
+                }
+            }
+
+            .palette__dropdown {
+                @extend %palette__dropdown;
+            }
+        }
+
+        .management-block__btns {
+            flex       : 1 1 45%;
+            text-align : right;
+
+            button {
+                font-family      : 'SourceSansPro-Semibold';
+                font-size        : 18px;
+                text-transform   : uppercase;
+                background-color : transparent;
+                border           : none;
+                margin-top       : 3px;
+
+                &:hover {
+                    background-color: rgba($black, .05);
+                }
+            }
+
+            .btn-disabled {
+                color          : rgba($black, .5);
+                pointer-events : none;
+            }
+        }
+    }
+}

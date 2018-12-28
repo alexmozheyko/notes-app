@@ -1,0 +1,282 @@
+@import "../assets/resources/_colors";
+@import "../assets/resources/_fonts";
+@import "../assets/resources/_hamburger_menu";
+
+
+
+.notes__global-wrapper {
+    background-image    : url('app/assets/images/notes_background.jpg');
+    background-repeat   : no-repeat;
+    background-size     : cover;
+    background-position : center;
+    width               : 100%;
+    height              : 100%; 
+    min-height          : 500px;
+
+    .navbar-east-bay {
+        display          : flex;
+        justify-content  : space-between; 
+        min-height       : 60px;
+        height           : 60px;
+        background-color : $east-bay;
+        border-radius    : 0;
+
+        .menu-button__wrapper {
+            flex: 1 1 34%;
+            @extend %hamburger-menu-icon;
+
+            @media (max-width: 1024px) {
+                flex: 1 0 25%;
+            }
+        }
+
+        .search-field__wrapper {
+            flex        : 1 0 35%;
+            display     : flex;
+            align-items : center;
+            position    : relative;
+
+            @media (max-width: 1024px) {
+                flex: 1 0 50%;
+            }
+
+            @media (max-width: 600px) {
+               display: none;
+            }
+
+            .ion-ios-search-strong {
+                color       : rgba($white, .8);
+                font-size   : 2.6rem;
+            }
+
+            .search-field {
+                width            : 100%;
+                height           : 40px;
+                border           : none;
+                margin-left      : 22px;
+                font-size        : 22px;
+                font-family      : 'SourceSansPro-Regular'; 
+                color            :$white; 
+                background-color : transparent;
+
+                ~ .focus-border {
+                    position : absolute; 
+                    bottom   : 0; 
+                    left     : 0; 
+                    width    : 100%; 
+                    height   : 1px; 
+                    z-index  : 99;
+
+                    &:before, &:after {
+                        content          : ""; 
+                        position         : absolute; 
+                        bottom           : 0; 
+                        left             : 0; 
+                        width            : 0; 
+                        height           : 100%; 
+                        background-color : $white; 
+                        transition       : .4s;
+                    }
+
+                    &:after {
+                        left  : auto; 
+                        right : 0;
+                    }
+                }
+
+                &:focus {
+                   ~ .focus-border {
+                        &:before, &:after {
+                            width      : 51%; 
+                            transition : .4s;
+                        }
+                    } 
+                }
+
+                &::-webkit-input-placeholder {
+                    font-family : 'SourceSansPro-Light';
+                    color       : rgba($white, .8);
+                }
+            }
+        }
+
+        .signout-button__wrapper {
+            flex            : 1 1 34%;
+            display         : flex;
+            justify-content : flex-end;
+            align-items     : center;
+            margin-top      : 2px; 
+
+            @media (max-width: 1024px) {
+                flex: 1 0 25%;
+            }
+
+            .ion-log-out {
+                font-size     : 3.2rem;
+                color         : rgba($white, .8);
+                padding-right : 30px;
+
+                &:hover {
+                    cursor : pointer;
+                    color  : $white;
+                }
+            }
+        }
+    }
+
+    .sidenav-menu {
+        display          : flex;
+        flex-direction   : column;  
+        height           : 100%;
+        width            : 0;
+        position         : fixed;
+        z-index          : 1;
+        top              : 59px;
+        left             : 0;
+        background-color : rgba($charade, .98);
+        overflow-x       : hidden;
+        transition       : .6s;
+
+        .user-info__wrapper {
+            display         : flex;
+            justify-content : space-between;
+            padding-top     : 31px;
+            padding-left    : 23px;
+            padding-right   : 25px;
+            width           : 300px;
+            min-width       : 300px;
+            height          : 107px;
+
+            .user__photo {
+                
+            }
+
+            .user-info__content {
+                display        : flex;
+                flex-direction : column;
+                align-items    : flex-end;
+                padding-top    : 4px;
+
+                .user__name {
+                    color          : $white;
+                    font-family    : 'SourceSansPro-Semibold';
+                    font-size      : 20px;
+                    text-transform : capitalize;
+                }
+
+                .user__registration-date {
+                    color       : rgba($white, .5);
+                    font-family : 'SourceSansPro-Light';
+                    font-size   : 13px;
+                }
+            }
+        }
+
+        .sidemenu-option__wrapper {
+            display         : flex;
+            width           : 300px;
+            min-width       : 300px;
+            height          : 60px;    
+            justify-content : space-between;
+            align-items     : center; 
+            padding         : 0 25px;
+
+            -webkit-transition : background-color .2s;
+               -moz-transition : background-color .2s;
+                -ms-transition : background-color .2s;
+                    transition : background-color .2s;
+
+            &:hover {
+                background-color : $gun-powder;
+                cursor           : pointer;
+
+                -webkit-transition : background-color .2s;
+                   -moz-transition : background-color .2s;
+                    -ms-transition : background-color .2s;
+                        transition : background-color .2s;
+            }
+
+            .sidemenu-option__icon { 
+                padding-top: 2px;
+
+                i {
+                    color     : $nevada;
+                    font-size : 3.2rem;
+                }
+
+                .ion-ios-box {
+                    font-size: 3.8rem;
+                }
+
+                .ion-trash-b {
+                    padding-left: 1px;
+                }
+
+                .ion-android-settings {
+                    font-size: 2.8rem;
+                }
+            }
+
+            &.sidemenu-option-active {
+                background-color: $gun-powder;
+
+                .sidemenu-option__name {
+                    font-family : 'SourceSansPro-Semibold';
+                    color       : $white;
+                }
+
+                .sidemenu-option__icon {
+                    i {
+                        color: $deep-blush;
+                    }
+                }
+            }
+        }
+
+        .sidemenu-option__name {
+            font-family : 'SourceSansPro-Light';
+            font-size   : 20px;
+            color       : rgba($white, .8);
+        }
+    }
+
+    .sidemenu-footer__wrapper {
+        display        : flex;
+        flex-direction : column;
+        padding        : 0px 23px;
+        margin-top     : auto;
+        height         : 120px;
+        width          : 300px;
+        min-width      : 300px;
+
+        .sidemenu-footer__copyright-info,  .sidemenu-footer__author-info{
+            font-family : 'SourceSansPro-Light';
+            color       : rgba($white, .4);
+        }
+
+        .sidemenu-footer__copyright-info {
+            font-size: 16px;
+        }
+
+        .sidemenu-footer__author-info {
+            font-size: 14px;
+
+            a {
+                text-decoration : none;
+                color           : rgba($white, .4);
+                font-family     : 'SourceSansPro-Semibold';
+
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    .notes-app-content__wrapper {
+        height   : calc(100% - 70px);
+        width    : 100%;
+        position : absolute;
+        top      : 60px;  
+    }
+}

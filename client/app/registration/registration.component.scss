@@ -1,0 +1,47 @@
+@import "../assets/resources/_colors";
+@import "../assets/resources/_fonts";
+@import "../assets/resources/_auth_page_styles";
+@import "../assets/resources/_animations";
+
+.navbar__wrapper {
+    @extend %navbar__wrapper;
+}
+
+.authorization__wrapper {
+    @extend %authorization__wrapper;
+
+   .registration-card__container {
+        @extend %auth-card__container;
+        height: 490px;
+
+        .registration-card__title {
+            @extend %auth-card__title;
+            padding-top : 40px;
+        }
+
+        .registration-card__info {
+            padding-top    : 38px;
+            padding-bottom : 119px;
+
+            input {
+                @extend %auth__input;
+
+                &:not(:last-of-type) {
+                    margin-bottom: 23px;
+                }
+
+                &:last-of-type {
+                    margin-bottom: 40px;
+                }
+            }
+
+            button {
+            @extend %submit__button;
+            }
+        }
+    }
+
+    .footer__content {
+        @extend %footer__content;
+    }
+}
