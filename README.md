@@ -1,5 +1,4 @@
-# The client-server application to manage your notes 
-# (like Google Keep)
+# The client-server application to manage your notes \n (like Google Keep)
 
 1. Installation:
 >	* $root: npm i / yarn install
