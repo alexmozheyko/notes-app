@@ -1,4 +1,4 @@
-# The web application to manage your notes (like Google Keep)
+# The Angular 2 web application to manage your notes (like Google Keep)
 
 #### Installation:
 >	* npm i / yarn install
